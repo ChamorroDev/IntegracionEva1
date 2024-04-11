@@ -1,21 +1,39 @@
 Proyecto desarrollado en Django
+¡Bienvenido a nuestro proyecto!
+
+Descripción
+Este proyecto es una aplicación web desarrollada en Django.
 
 
-**Iniciar una terminal o simbolo de sistema
+Instrucciones de Uso
+Iniciar una terminal o símbolo de sistema:
 
-**Creacion de entorno
+
+Creación de entorno virtual:
+
 python -m venv entorno-virtual
 
 
-**Activar entorno
+
+Activar el entorno virtual:
+
 entorno-virtual\Scripts\activate
 
 
-**Instalación de dependencias en el entorno
+
+Instalación de dependencias:
+
 pip install -r df.txt
 
-**Correr django
-app/py manage.py runserver
 
-**Credencial de administrador
-chamorro 1234
+
+Ejecutar la aplicación Django:
+
+python manage.py runserver
+
+
+
+Credenciales de Administrador:
+
+Usuario: chamorro
+Contraseña: 1234
