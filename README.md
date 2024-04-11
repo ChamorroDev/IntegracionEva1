@@ -1,3 +1,6 @@
+Proyecto desarrollado en Django
+
+
 **Iniciar una terminal o simbolo de sistema
 
 **Creacion de entorno
