@@ -11,7 +11,9 @@ def home(request):
 
 
 
-def weather(request):
+def obtener_clima(request):
+    """
+
     api_key="oW3o4geoIFyojrJ6HAF6TPnkfSVqG7PE"
     root_url = 'http://dataservice.accuweather.com/currentconditions/v1/60449?'
     city = 'Santiago'
@@ -38,4 +40,6 @@ def weather(request):
             'iconweather':url_iconweather
 
         }
-    return render(request, 'weather.html',contexto)
+    """
+
+    return render(request, 'weather.html')

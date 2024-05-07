@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name="Home"),
-    path('w/', views.weather, name="Weather"),
+    path('ubicacion/', views.obtener_clima, name="Ubicacion"),
 
     
 

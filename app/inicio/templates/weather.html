@@ -13,39 +13,31 @@ Inicio
 
 {% block contenido %}
 
-<h6>Clima en {{ ciudad  }}</h6>
-<p>
-    <img src="{{ iconweather  }}" alt="">
-    {{ WeatherText  }} 
-   La temperatura actual es: {{ temperatura  }} °C 
 
-   
-
-</p>
 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="initial-scale=1.0"> 
     <title>Maps JavaScript API</title> 
-    <style> #map { 
+    <style> #mapa { 
     height: 100%; } 
     html, body { 
     height: 100%; margin: 0; padding: 0; } 
     </style> 
     </head> 
     <body> 
-    <div id ="map"> </div> 
+    <div id ="mapa"> </div> 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0LFmSlU8xybYGSfOBYuWwWKsxy8Jvv90&callback=initMap" async defer>
     </script> 
     <script> 
-    var map; 
+    var mapa; 
     function initMap() { 
-    map = new google.maps.Map(document.getElementById('map'), { 
+      mapa = new google.maps.Map(document.getElementById('mapa'), { 
        center: {lat: -33.49899370605242, lng: -70.61624988465984}, 
        zoom: 15, });
     var marker = new google.maps.Marker({ 
        position: {lat: -33.49899370605242, lng: -70.61624988465984}, 
-       map: map, 
+       mapa: mapa, 
        title: 'Duoc UC, San Joaquín' }); } 
 
     </script> 
