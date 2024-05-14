@@ -175,7 +175,3 @@ WEBPAY_CONFIGURATION = {
     'URL_RETORNO': 'http://localhost:8000/pedidos/retorno_pago/',
     'URL_FINAL': 'http://localhost:8000/',
 }
-
-
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
