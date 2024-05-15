@@ -30,8 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']   
 
 
-CSRF_COOKIE_DOMAIN = '.tiendamusicaldjango.azurewebsites.net'
-
+CSRF_COOKIE_HTTPONLY = True
 
 ##ALLOWED_HOSTS = ["192.168.1.4"]
 
