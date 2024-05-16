@@ -24,7 +24,7 @@ entorno-virtual\Scripts\activate
 
 
 4. **Instalación de dependencias:**
-pip install -r df.txt
+pip install -r requirements.txt
 
 
 
