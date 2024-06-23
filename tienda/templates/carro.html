@@ -1,62 +1,69 @@
-<table class="table table-bordered  " style="color:black;">
+<table class="table table-bordered" style="color: black;">
     <thead>
         <tr>
-            <th colspan="3" class="text-center "> Carro Compras</th>
+            <th colspan="3" class="text-center">Carro Compras</th>
         </tr>
-    
         <tr>
             <th>Producto</th>
             <th>Cantidad</th>
             <th>Suma</th>
-    
         </tr>
     </thead>
-    
     <tbody>
-    
-    {% if request.session.carro.items %}
-        {% for key,value in request.session.carro.items %}
-        <tr class="text-center">
-        <td> {{value.nombre}}</td>
-        <td> {{value.cantidad}}</td>
-        <td> 
-            <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a> 
-            <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-danger">-</a><br>
-            $ {{value.precio}}
-        </td>
-        </tr>
-        {% endfor %}
-        
-    {% else %} 
-    <tr>
-        <td colspan="3"><div class="alert alert-danger text-center">Sin Productos</div></td>
-    </tr>
-    
-    
-    {% endif %}
-    
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+                <tr class="text-center">
+                    <td>{{ value.nombre }}</td>
+                    <td>{{ value.cantidad }}</td>
+                    <td>
+                        <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                        <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-danger">-</a><br>
+                        $ {{ value.precio }}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">
+                    <div class="alert alert-danger text-center">Sin Productos</div>
+                </td>
+            </tr>
+        {% endif %}
     </tbody>
-    
     <tfoot>
         <tr>
             <td colspan="3">
                 Total: ${{ importe_total_carro }}
             </td>
         </tr>
-        {% if request.session.carro.items %}
         <tr>
-        
-        <td colspan="3" class="text-center">
-            <a class = 'btn btn-secondary' href="{% url 'carro:limpiar'  %}">Limpiar</a>
-
-            <a href= "{% url 'procesar_pedido' %}"class="btn btn-success">Hacer pedido</a>
-          
-        </td>
+            <td colspan="3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control " placeholder="Código promocional" id="codigo_promocional">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary"style="margin: 10px;" type="button" id="validar_codigo">Validar</button>
+                    </div>
+                </div>
+            </td>
         </tr>
+        {% if request.session.carro.items %}
+            <tr>
+                <td colspan="3" class="text-center">
+                    <a class="btn btn-secondary" href="{% url 'carro:limpiar' %}">Limpiar</a>
+                    <a href="{% url 'procesar_pedido' %}" class="btn btn-success">Hacer pedido</a>
+                </td>
+            </tr>
         {% endif %}
-    
     </tfoot>
-    
-    </table>
-    
-    
+</table>
+
+<script>
+    document.getElementById('validar_codigo').addEventListener('click', function() {
+        var codigo = document.getElementById('codigo_promocional').value;
+        if (codigo === 'codigo') {
+            alert('Código promocional válido. Se aplicará el descuento por 10%');
+        } else {
+            alert('Código promocional inválido.');
+        }
+    });
+</script>

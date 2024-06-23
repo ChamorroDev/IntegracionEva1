@@ -1,19 +1,19 @@
 from django.test import TestCase
-
-
-
 import os
 import django
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TiendaMusical.settings')
 django.setup()
 
-from tuapp.models import Disco, FormatoDisco
+from tienda.models import Disco, FormatoDisco
 
 def crear_discos_de_prueba():
  
-
-    # Crear discos de prueba
+   
+    try:
+        formato_id = FormatoDisco.objects.get(id=int(3))
+    except FormatoDisco.DoesNotExist:
+        print(f'El FormatoDisco con ID {formato_id} no existe.')
+        return
     discos = [
         {
             'nombre': 'Folklore',
@@ -23,7 +23,7 @@ def crear_discos_de_prueba():
             'stock': 100,
             'annopublicacion': 2020,
             'imagen': 'folklore.jpeg',
-            'formato': 1,
+            'formato': formato_id,
             'oferta': False
         },
         {
@@ -34,7 +34,7 @@ def crear_discos_de_prueba():
             'stock': 80,
             'annopublicacion': 2020,
             'imagen': 'evermore.jpeg',
-            'formato': 1,
+            'formato':formato_id,
             'oferta': True
         },
         {
@@ -45,21 +45,20 @@ def crear_discos_de_prueba():
             'stock': 120,
             'annopublicacion': 2014,
             'imagen': '1989.jpg',
-            'formato': 1,
+            'formato': formato_id,
             'oferta': False
         }
     ]
 
     for disco_data in discos:
-        disco = Disco.objects.create(
-            nombre=disco_data['nombre'],
+        disco = Disco(nombre=disco_data['nombre'],
             nombreAlbum=disco_data['nombreAlbum'],
             artista=disco_data['artista'],
             precio=disco_data['precio'],
             stock=disco_data['stock'],
             annopublicacion=disco_data['annopublicacion'],
             imagen=disco_data['imagen'],
-            formatos=disco_data['formato'],
+            formatos_id=disco_data['formato'],
             oferta=disco_data['oferta']
         )
         disco.save()

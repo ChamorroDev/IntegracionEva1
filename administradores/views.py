@@ -47,7 +47,7 @@ def editar_producto(request, disco_id):
                 nprecio=request.POST['precio']
                 nstock=request.POST['stock']
                 nanno=request.POST['annopublicacion']
-                nimagen=request.POST['imagen']
+                nimagen=request.POST.get('imagen')
                 nformato=request.POST['formatos']
                 nformato=FormatoDisco.objects.get(id=int(nformato))
                 now = datetime.now()
@@ -72,26 +72,42 @@ def eliminarProducto(request,disco_id):
 
 
 
-@login_required(login_url='Home')
 def CrearDisco(request):
-    ## request.user.groups.filter(name='admins').exists()
-    for grupo in request.user.groups.all():
-        if grupo.name == 'admins':
-            nnombre=request.POST['nombre']
-            nalbum=request.POST['nombreAlbum']
-            nartista=request.POST['artista']
-            nprecio=request.POST['precio']
-            nstock=request.POST['stock']
-            nanno=request.POST['annopublicacion']
-            nimagen=request.POST.get('imagen')
-            nformato=request.POST['formatos']
-            noferta = request.POST.get('oferta') 
-            noferta = bool(noferta) 
-            formatin=FormatoDisco.objects.get(id=int(nformato))
-            dis= Disco(oferta=noferta,nombre=nnombre,nombreAlbum=nalbum,artista=nartista,formatos=formatin,precio=int(nprecio),vendidos=0,stock=int(nstock),annopublicacion=nanno,imagen=nimagen)
-            dis.save()
-            return redirect('productosAdmin')
-    return redirect('Home')
+    if request.method == 'POST':
+        for grupo in request.user.groups.all():
+            if grupo.name == 'admins':
+                nnombre = request.POST['nombre']
+                nalbum = request.POST['nombreAlbum']
+                nartista = request.POST['artista']
+                nprecio = request.POST['precio']
+                nstock = request.POST['stock']
+                nanno = request.POST['annopublicacion']
+                nformato_id = int(request.POST['formatos'])
+                noferta = bool(request.POST.get('oferta', False))
+                nimagen = request.FILES['imagen']  
+
+                try:
+                    formatin = FormatoDisco.objects.get(id=nformato_id)
+                except FormatoDisco.DoesNotExist:
+                    return redirect('Home')
+
+                dis = Disco(
+                    oferta=noferta,
+                    nombre=nnombre,
+                    nombreAlbum=nalbum,
+                    artista=nartista,
+                    formatos=formatin,
+                    precio=int(nprecio),
+                    vendidos=0,
+                    stock=int(nstock),
+                    annopublicacion=nanno,
+                    imagen=nimagen
+                )
+                dis.save()
+                return redirect('productosAdmin')
+        return redirect('Home')
+    else:
+        return redirect('Home')  
 
 ## USUARIO 
 
