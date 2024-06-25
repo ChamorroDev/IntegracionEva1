@@ -1,0 +1,112 @@
+.content-top{
+	padding:10% 0;
+}
+.content-top h2{
+	color: #000;
+	font-size:3em;
+	font-weight: 800;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 1.5%;
+}
+.content-top p{
+	color: #000;
+	font-size: 0.95em;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 600;
+	margin-bottom:1%;
+}
+.content-top h3{
+	color:#000;
+	font-size:1.5em;
+	text-transform:uppercase;
+	font-weight:700;
+	text-align:center;
+	margin:2% 0 0 0;
+}
+#flexiselDemo1, #flexiselDemo2, #flexiselDemo3 {
+	display: none;
+}
+.nbs-flexisel-container {
+	position: relative;
+	max-width: 100%;
+}
+.nbs-flexisel-ul {
+	position: relative;
+	width: 9999px;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	text-align: center;
+}
+.nbs-flexisel-inner {
+	overflow: hidden;
+	margin: 0 auto;
+}
+.nbs-flexisel-item {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	position: relative;
+	line-height: 0px;
+}
+.nbs-flexisel-item > img {
+	width:100%;
+	cursor: pointer;
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width:210px;
+	max-height:417px;
+}
+/*** Navigation ***/
+.nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+	width:140px;
+	height: 245px;
+	position: absolute;
+	cursor: pointer;
+	z-index: 100;
+}
+.nbs-flexisel-nav-left {
+	left: 205px;
+	background: url(../images/img-sprite.png) no-repeat -110px 1px;
+}
+.nbs-flexisel-nav-right {
+	right:205px;
+	background: url(../images/img-sprite.png) no-repeat -254px 1px;
+}
+
+@media (max-width:1024px){
+.nbs-flexisel-nav-left {
+	left: 60px;
+ }
+ .nbs-flexisel-nav-right {
+	right: 60px;
+ }
+}
+
+@media (max-width:800px){
+.nbs-flexisel-nav-left {
+    left: 10px;
+    }
+.nbs-flexisel-nav-right {
+    right: 10px;
+    }
+}
+
+@media (max-width:480px){
+    .nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+        width: 75px;
+        height:126px;
+     }
+     .nbs-flexisel-nav-left {
+        left:10px;
+        background: url(../images/img-sprite.png) no-repeat -17px -372px;
+     }
+     .nbs-flexisel-nav-right {
+        right:10px;
+        background: url(../images/img-sprite.png) no-repeat -80px -372px;
+     }
+}
